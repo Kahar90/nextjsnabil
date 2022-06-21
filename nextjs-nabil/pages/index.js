@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
-import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import { Paper } from "@mui/material";
 import { Alert } from "@mui/material";
@@ -27,43 +25,39 @@ export default function Home() {
           }}
         >
           <div>
+            <h1> Login </h1>
             <div>
-              <h1> Login </h1>
-              <div>
-                <form onSubmit={login}>
-                  <TextField sx={{marginTop:"10px", marginBottom: "10px"}}
-                    label="ID"
-                    variant="outlined"
-                    id="idField"
-                    required
-                  />
+              <form onSubmit={login}>
+                <TextField
+                  sx={{ marginTop: "10px", marginBottom: "10px" }}
+                  label="ID"
+                  variant="outlined"
+                  id="idField"
+                  required
+                />
 
-                  <br></br>
+                <br></br>
 
-                  <TextField sx={{marginTop:"", marginBottom: "10px"}}
-                    label="Password"
-                    variant="outlined"
-                    id="passwordField"
-                    required
-                  />
-                  <br></br>
+                <TextField
+                  sx={{ marginTop: "", marginBottom: "10px" }}
+                  label="Password"
+                  variant="outlined"
+                  id="passwordField"
+                  required
+                />
+                <br></br>
 
-                  <Button
-                    type="submit"
-                    
-                    
-                    sx={{ marginTop: "10px" }}
-                    // onClick = {login}
-                    
-                  >
-                    Login
-                  </Button>
-                  
-                </form>
-              </div>
+                <Button
+                  type="submit"
+                  sx={{ marginTop: "10px" }}
+                  // onClick = {login}
+                >
+                  Login
+                </Button>
+              </form>
             </div>
-           
           </div>
+
           <br></br>
           {alert && <Alert severity="error">Invalid ID or Password</Alert>}
           <p>
@@ -90,14 +84,10 @@ export default function Home() {
       },
       body: JSON.stringify(data),
     }).then((res) => {
-      // console.log(res.status);
       res.json().then((data) => {
-        // console.log(data);
         if (data.message === "login success") {
-          // login success
           window.location.href = "/homepage";
         } else {
-          // login failed
           setAlert(true);
         }
       });
