@@ -30,22 +30,39 @@ export default function Home() {
             <div>
               <h1> Login </h1>
               <div>
-                <TextField label="ID" variant="outlined" id="idField" />
+                <form onSubmit={login}>
+                  <TextField sx={{marginTop:"10px", marginBottom: "10px"}}
+                    label="ID"
+                    variant="outlined"
+                    id="idField"
+                    required
+                  />
 
-                <br></br>
-                <br></br>
-                <TextField
-                  label="Password"
-                  variant="outlined"
-                  id="passwordField"
-                />
+                  <br></br>
+
+                  <TextField sx={{marginTop:"", marginBottom: "10px"}}
+                    label="Password"
+                    variant="outlined"
+                    id="passwordField"
+                    required
+                  />
+                  <br></br>
+
+                  <Button
+                    type="submit"
+                    
+                    
+                    sx={{ marginTop: "10px" }}
+                    // onClick = {login}
+                    
+                  >
+                    Login
+                  </Button>
+                  
+                </form>
               </div>
             </div>
-            <br></br>
-
-            <Button variant="outlined" onClick={login}>
-              Login
-            </Button>
+           
           </div>
           <br></br>
           {alert && <Alert severity="error">Invalid ID or Password</Alert>}
@@ -59,9 +76,12 @@ export default function Home() {
   );
 
   function login(params) {
+    event.preventDefault();
     let idField = document.getElementById("idField").value;
     let passwordField = document.getElementById("passwordField").value;
     let data = { id: idField, password: passwordField };
+
+    // validation
 
     fetch("/api/login", {
       method: "POST",
