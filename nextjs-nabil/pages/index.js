@@ -20,7 +20,7 @@ export default function Home() {
         <Paper
           variant="outlined"
           sx={{
-            backgroundColor: "whitesmoke",
+            backgroundColor: "white",
             padding: "40px",
             borderRadius: "20px",
             boxShadow: "0px 0px 2px 0px ",
@@ -30,16 +30,11 @@ export default function Home() {
             <div>
               <h1> Login </h1>
               <div>
-                <TextField
-                  required
-                  label="ID"
-                  variant="outlined"
-                  id="idField"
-                />
+                <TextField label="ID" variant="outlined" id="idField" />
 
                 <br></br>
+                <br></br>
                 <TextField
-                  required
                   label="Password"
                   variant="outlined"
                   id="passwordField"
@@ -89,4 +84,3 @@ export default function Home() {
     });
   }
 }
-
