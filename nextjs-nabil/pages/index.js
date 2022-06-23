@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
+import { LoginContext } from "../src/context";
+import { useRouter } from "next/router";
+import { useState, createContext, useContext, useEffect } from "react";
 import { Box } from "@mui/system";
-import { Paper } from "@mui/material";
-import { Alert } from "@mui/material";
+import Logincard from "../src/components/logincard";
 
 export default function Home() {
-  const [alert, setAlert] = useState(false);
+  // if user is loggedin, go straight to homepage.  Else go to login page
+  const { isAuthenticated, authlogic } = useContext(LoginContext);
+  const router = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("loggedin")) {
+      router.replace("/");
+    } else {
+      router.replace("/homepage");
+      authlogic(true);
+      
+    }
+  }, [router.events]);
   return (
     <div>
       <Box
@@ -15,82 +25,8 @@ export default function Home() {
         alignItems="center"
         minHeight="100vh"
       >
-        <Paper
-          variant="outlined"
-          sx={{
-            backgroundColor: "white",
-            padding: "40px",
-            borderRadius: "20px",
-            boxShadow: "0px 0px 2px 0px ",
-          }}
-        >
-          <div>
-            <h1> Login </h1>
-            <div>
-              <form onSubmit={login}>
-                <TextField
-                  sx={{ marginTop: "10px", marginBottom: "10px" }}
-                  label="ID"
-                  variant="outlined"
-                  id="idField"
-                  required
-                />
-
-                <br></br>
-
-                <TextField
-                  sx={{ marginTop: "", marginBottom: "10px" }}
-                  label="Password"
-                  variant="outlined"
-                  id="passwordField"
-                  required
-                />
-                <br></br>
-
-                <Button
-                  type="submit"
-                  sx={{ marginTop: "10px" }}
-                  // onClick = {login}
-                >
-                  Login
-                </Button>
-              </form>
-            </div>
-          </div>
-
-          <br></br>
-          {alert && <Alert severity="error">Invalid ID or Password</Alert>}
-          <p>
-            login: nabil <br></br>
-            password: nabil
-          </p>
-        </Paper>
+        <Logincard></Logincard>
       </Box>
     </div>
   );
-
-  function login(params) {
-    event.preventDefault();
-    let idField = document.getElementById("idField").value;
-    let passwordField = document.getElementById("passwordField").value;
-    let data = { id: idField, password: passwordField };
-
-    // validation
-
-    fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => {
-      res.json().then((data) => {
-        if (data.message === "login success") {
-          window.location.href = "/homepage";
-        } else {
-          setAlert(true);
-        }
-      });
-    });
-  }
 }
