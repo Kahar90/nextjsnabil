@@ -30,15 +30,7 @@ const LoginProvider = (props) => {
   const fetchFromLocalStorage = () => {
     // restore if user has logged in before
     let temp = localStorage.getItem("loggedin");
-    console.log(temp + " value of temp inside fetchfrmlocalstorage");
     setisAuthenticated(temp);
-    console.log(localStorage.getItem("loggedin") + " Value loggedin");
-    console.log(
-      isAuthenticated + " value isAuthenticated inside fetchfromlocalstorage"
-    );
-
-    // if user is loggedin, go straight to homepage. Else go to login page
-    
   };
 
   const saveToLocalStorage = () => {
@@ -74,7 +66,7 @@ const LoginProvider = (props) => {
         fetchFromLocalStorage,
         signIn,
         alertFailLogin,
-        isTabletOrMobile
+        isTabletOrMobile,
       }}
     >
       {children}

@@ -1,4 +1,3 @@
-import TableHome from "../src/components/table";
 import Mobilescreenhomepage from "../src/views/Mobilescreenhomepage";
 import Desktopscreenhomepage from "../src/views/Desktopscreenhomepage";
 import { useContext, useEffect } from "react";

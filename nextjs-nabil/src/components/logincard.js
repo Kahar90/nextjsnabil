@@ -1,5 +1,4 @@
 import Grid from "@mui/material/Grid";
-import { useRouter } from "next/router";
 import { LoginContext } from "../context";
 import { useContext, useEffect } from "react";
 import { Paper } from "@mui/material";
@@ -9,7 +8,6 @@ import { Button } from "@mui/material";
 
 const Logincard = () => {
   const { signIn, alertFailLogin } = useContext(LoginContext);
-  const router = useRouter();
 
   return (
     <div>

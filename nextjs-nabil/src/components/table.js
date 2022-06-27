@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { LoginContext } from "../context";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,8 +12,6 @@ import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
 
 const TableHome = () => {
-  const { isAuthenticated, authlogic } = useContext(LoginContext);
-
   const loggedout = () => {
     localStorage.removeItem("loggedin");
   };
@@ -26,7 +24,6 @@ const TableHome = () => {
           marginTop: "10px",
         }}
       >
-        
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
