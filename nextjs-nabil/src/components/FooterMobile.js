@@ -11,7 +11,7 @@ const FooterMobile = () => {
           width: "100%",
         }}
       >
-        <h1> Footer for Mobile </h1>
+        <h3> Footer for Mobile </h3>
       </Box>
     </div>
   );

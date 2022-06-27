@@ -12,9 +12,37 @@ const NavBarDesktop = () => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, textAlign: "center" }}
+            sx={{ flexGrow: 1, textAlign: "start" }}
           >
             Header for Desktop
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: "end" }}
+          >
+            Home
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: "end" }}
+          >
+            About
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: "end" }}
+          >
+            News
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: "end" }}
+          >
+            Listen
           </Typography>
         </Toolbar>
       </AppBar>

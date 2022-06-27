@@ -10,8 +10,14 @@ const NavBarMobile = () => {
       <AppBar position="static" color="default">
         <Toolbar>
           
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign:"center" }}>
+          <Typography variant="h10" component="div" sx={{ flexGrow: 1, textAlign:"start" }}>
             Header for Mobile
+          </Typography>
+          <Typography variant="h10" component="div" sx={{ flexGrow: 1, textAlign:"end" }}>
+            About
+          </Typography>
+          <Typography variant="h10" component="div" sx={{ flexGrow: 1, textAlign:"end" }}>
+            News
           </Typography>
         </Toolbar>
       </AppBar>
