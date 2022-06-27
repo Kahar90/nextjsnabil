@@ -38,18 +38,14 @@ const LoginProvider = (props) => {
     );
 
     // if user is loggedin, go straight to homepage. Else go to login page
-    if (isAuthenticated === "true") {
-      router.replace("/homepage");
-    } else {
-      router.replace("/");
-    }
+    
   };
 
   const saveToLocalStorage = () => {
     localStorage.setItem("loggedin", "true");
   };
 
-  const Loginfunc = (data) => {
+  const signIn = (data) => {
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -61,7 +57,7 @@ const LoginProvider = (props) => {
         console.log(data);
         if (data.message === "login success") {
           console.log(isAuthenticated);
-          setisAuthenticated(true);
+          setisAuthenticated("true");
           saveToLocalStorage();
           router.replace("/homepage");
         } else {
@@ -76,7 +72,7 @@ const LoginProvider = (props) => {
       value={{
         isAuthenticated,
         fetchFromLocalStorage,
-        Loginfunc,
+        signIn,
         alertFailLogin,
         isTabletOrMobile
       }}

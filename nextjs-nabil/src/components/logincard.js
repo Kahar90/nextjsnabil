@@ -8,7 +8,7 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 
 const Logincard = () => {
-  const { Loginfunc, alertFailLogin } = useContext(LoginContext);
+  const { signIn, alertFailLogin } = useContext(LoginContext);
   const router = useRouter();
 
   return (
@@ -87,7 +87,7 @@ const Logincard = () => {
     let idField = document.getElementById("idField").value;
     let passwordField = document.getElementById("passwordField").value;
     let data = { id: idField, password: passwordField };
-    Loginfunc(data);
+    signIn(data);
   }
 };
 

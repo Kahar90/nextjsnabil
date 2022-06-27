@@ -7,15 +7,15 @@ import Logincard from "../src/components/logincard";
 export default function Home() {
   const { isAuthenticated } = useContext(LoginContext);
   const router = useRouter();
+
   useEffect(() => {
     if (isAuthenticated === "true") {
-      //   router.replace("/");
       router.replace("/homepage");
     } else {
-      //   router.replace("/homepage");
       router.replace("/");
     }
-  }, []);
+  }, [isAuthenticated]);
+
   return (
     <div>
       <Box

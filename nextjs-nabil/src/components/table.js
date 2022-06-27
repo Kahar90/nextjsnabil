@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const TableHome = () => {
   const { isAuthenticated, authlogic } = useContext(LoginContext);
@@ -25,19 +26,7 @@ const TableHome = () => {
           marginTop: "10px",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: "10px",
-            marginBottom: "10px",
-            marginRight: "10px",
-          }}
-        >
-          <Button variant="outlined" href="/" onClick={loggedout}>
-            Log out
-          </Button>
-        </Box>
+        
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
@@ -74,6 +63,11 @@ const TableHome = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <Grid container justifyContent="center" marginTop={10}>
+          <Button variant="outlined" href="/" onClick={loggedout}>
+            Log out
+          </Button>
+        </Grid>
       </Box>
     </div>
   );
