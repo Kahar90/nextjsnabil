@@ -5,18 +5,17 @@ import { Box } from "@mui/system";
 import Logincard from "../src/components/logincard";
 
 export default function Home() {
-  // if user is loggedin, go straight to homepage.  Else go to login page
-  const { isAuthenticated, authlogic } = useContext(LoginContext);
+  const { isAuthenticated } = useContext(LoginContext);
   const router = useRouter();
   useEffect(() => {
-    if (!localStorage.getItem("loggedin")) {
-      router.replace("/");
-    } else {
+    if (isAuthenticated === "true") {
+      //   router.replace("/");
       router.replace("/homepage");
-      authlogic(true);
-      
+    } else {
+      //   router.replace("/homepage");
+      router.replace("/");
     }
-  }, [router.events]);
+  }, []);
   return (
     <div>
       <Box

@@ -7,7 +7,7 @@ import NavBar from "../components/navbar";
 const AuthenticatedLayout = ({ children }) => {
   const { isAuthenticated, setAuthenticated } = useContext(LoginContext);
 
-  if (isAuthenticated === true) {
+  if (isAuthenticated === 'true') {
     return (
       <div>
         <NavBar></NavBar>
