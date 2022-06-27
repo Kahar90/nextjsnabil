@@ -8,8 +8,7 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 
 const Logincard = () => {
-  const { isAuthenticated, Loginfunc, refetch, alertFailLogin } =
-    useContext(LoginContext);
+  const { Loginfunc, alertFailLogin } = useContext(LoginContext);
   const router = useRouter();
 
   return (
