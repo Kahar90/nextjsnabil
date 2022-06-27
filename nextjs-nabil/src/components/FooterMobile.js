@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 
-const Footer = () => {
+const FooterMobile = () => {
   return (
     <div>
       <Box
@@ -11,10 +11,10 @@ const Footer = () => {
           width: "100%",
         }}
       >
-        <h1>This is a footer activated by context</h1>
+        <h1> Footer for Mobile </h1>
       </Box>
     </div>
   );
 };
 
-export default Footer;
+export default FooterMobile;
