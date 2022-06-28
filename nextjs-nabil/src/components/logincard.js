@@ -18,12 +18,13 @@ const Logincard = () => {
         sx={{ flexDirection: { xs: "column", md: "row" } }}
       >
         <Grid item sx={{ textAlign: "center", margin: "auto" }}>
-          <h1>
+          <h1 className={styles.h1}>
             Hello There! <br></br>Please Log in
           </h1>
         </Grid>
         <Grid item>
           <Paper
+            className={styles.paper}
             variant="outlined"
             sx={{
               padding: "40px",
@@ -37,7 +38,7 @@ const Logincard = () => {
 
               <div>
                 <form onSubmit={login}>
-                  <TextField
+                  <TextField className={styles.textfield}
                     sx={{ marginTop: "10px", marginBottom: "10px" }}
                     label="ID"
                     variant="outlined"
@@ -47,7 +48,7 @@ const Logincard = () => {
 
                   <br></br>
 
-                  <TextField
+                  <TextField className={styles.textfield}
                     sx={{ marginTop: "", marginBottom: "10px" }}
                     label="Password"
                     variant="outlined"
