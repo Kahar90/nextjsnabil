@@ -1,4 +1,5 @@
 import { Box } from "@mui/system";
+import styles from "./../../styles/footer.module.scss";
 
 const FooterMobile = () => {
   return (
@@ -11,7 +12,9 @@ const FooterMobile = () => {
           width: "100%",
         }}
       >
-        <h3> Footer for Mobile </h3>
+        <div className={styles.mobile}>
+          <h3 className={styles.h1}> Footer for Mobile </h3>
+        </div>
       </Box>
     </div>
   );

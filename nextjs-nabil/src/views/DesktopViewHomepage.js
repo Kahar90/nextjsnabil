@@ -1,10 +1,10 @@
 import TableHome from "../components/table";
 
-const Desktopscreenhomepage = () => {
+const DesktopViewHomepage = () => {
   return (
     <div>
       <TableHome />
     </div>
   );
 };
-export default Desktopscreenhomepage;
+export default DesktopViewHomepage;

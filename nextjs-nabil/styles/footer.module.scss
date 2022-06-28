@@ -1,0 +1,33 @@
+$fontfamily: "serif";
+
+.footer {
+  padding: 1rem;
+  background-color: #a94949;
+  text-align: center;
+  font-family: $fontfamily;
+}
+.mobile {
+    font-size: 1.5rem;
+    color: #000;
+    padding: 1rem;
+    background-color: #a94949;
+    text-align: center;
+    font-family: $fontfamily;
+  .h1 {
+    font-size: 1.5rem;
+    color: rgb(155, 91, 91);
+    padding: 1rem;
+    background-color: #a94949;
+    text-align: center;
+    font-family: $fontfamily;
+  }
+}
+
+// .h1 {
+//   font-size: 1.5rem;
+//   color: #fff;
+//   padding: 1rem;
+//   background-color: #a94949;
+//   text-align: center;
+//   font-family: $fontfamily;
+// }

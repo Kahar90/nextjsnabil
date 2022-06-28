@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-
+import styles from "./../../styles/footer.module.scss";
 const FooterDesktop = () => {
   return (
     <div>
@@ -11,7 +11,7 @@ const FooterDesktop = () => {
           width: "100%",
         }}
       >
-        <h1> Footer for Desktop </h1>
+        <h1 className={styles.h1}> Footer for Desktop </h1>
       </Box>
     </div>
   );

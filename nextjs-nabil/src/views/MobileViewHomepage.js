@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import TableHome from "../components/table";
 
-const Mobilescreenhomepage = () => {
+const MobileViewHomepage = () => {
   return (
     <div>
       <TableHome></TableHome>
@@ -13,4 +13,4 @@ const Mobilescreenhomepage = () => {
     </div>
   );
 };
-export default Mobilescreenhomepage;
+export default MobileViewHomepage;
