@@ -5,12 +5,13 @@ import { Paper } from "@mui/material";
 import { Alert } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
+import styles from "../../styles/loginpage.module.scss";
 
 const Logincard = () => {
   const { signIn, alertFailLogin } = useContext(LoginContext);
 
   return (
-    <div>
+    <div className={styles.logincard}>
       <Grid
         container
         spacing={10}
@@ -25,7 +26,6 @@ const Logincard = () => {
           <Paper
             variant="outlined"
             sx={{
-              backgroundColor: "white",
               padding: "40px",
               borderRadius: "20px",
               boxShadow: "0px 0px 2px 0px ",
@@ -56,11 +56,7 @@ const Logincard = () => {
                   />
                   <br></br>
 
-                  <Button
-                    type="submit"
-                    sx={{ marginTop: "10px" }}
-                    // onClick = {login}
-                  >
+                  <Button className={styles.button} type="submit">
                     Login
                   </Button>
                 </form>

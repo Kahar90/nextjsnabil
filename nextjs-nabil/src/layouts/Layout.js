@@ -1,30 +1,21 @@
 import React from "react";
 import { useContext } from "react";
 import { LoginContext } from "../context";
-import FooterDesktop from "../components/FooterDesktop";
-import NavBarDesktop from "../components/NavBarDesktop";
-import NavBarMobile from "../components/NavbarMobile";
-import FooterMobile from "../components/FooterMobile";
+
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const Layout = ({ children }) => {
   const { isAuthenticated, setAuthenticated, isTabletOrMobile } =
     useContext(LoginContext);
 
-  if (isAuthenticated === "true" && isTabletOrMobile) {
+  if (isAuthenticated === "true") {
     return (
       <div>
-        <NavBarMobile></NavBarMobile>
+        <NavBar></NavBar>
 
         {children}
-        <FooterMobile></FooterMobile>
-      </div>
-    );
-  } else if (isAuthenticated === "true" && !isTabletOrMobile) {
-    return (
-      <div>
-        <NavBarDesktop></NavBarDesktop>
-        {children}
-        <FooterDesktop></FooterDesktop>
+        <Footer> </Footer>
       </div>
     );
   } else {

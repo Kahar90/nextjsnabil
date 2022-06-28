@@ -1,8 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { LoginContext } from "../src/context";
-import MobileViewHomepage from "../src/views/MobileViewHomepage";
-import DesktopViewHomepage from "../src/views/DesktopViewHomepage";
+import ViewHomepage from "../src/views/ViewHomepage";
 
 export default function homepage() {
   const { isTabletOrMobile, isAuthenticated } = useContext(LoginContext);
@@ -18,7 +17,7 @@ export default function homepage() {
 
   return (
     <div>
-      {isTabletOrMobile ? <MobileViewHomepage /> : <DesktopViewHomepage />}
+      <ViewHomepage />
     </div>
   );
 }
