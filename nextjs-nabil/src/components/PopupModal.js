@@ -31,7 +31,9 @@ const PopupModal = ({ index }) => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Info</Button>
+      <Button onClick={handleOpen} className={styles.button}>
+        Info
+      </Button>
       <Modal
         className={styles.modal}
         open={open}
@@ -39,7 +41,7 @@ const PopupModal = ({ index }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className={styles.box}>
           <div>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               {isLoadingMore ? (
@@ -80,6 +82,13 @@ const PopupModal = ({ index }) => {
               <div></div>
             )}
           </div>
+          {isLoadingMore ? (
+            <div></div>
+          ) : (
+            <Button className={styles.buttonModal} onClick={handleClose}>
+              Close
+            </Button>
+          )}
         </Box>
       </Modal>
     </div>
