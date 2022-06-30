@@ -15,6 +15,8 @@ const LoginProvider = (props) => {
   const [isAuthenticated, setisAuthenticated] = useState("false");
   const [alertFailLogin, setalertFailLogin] = useState(false);
   const [dataTeams, setDataTeams] = useState([]);
+  const [moreData, setmoreData] = useState([])
+  
   const router = useRouter();
   // const isDesktopOrLaptop = useMediaQuery({
   //   query: "(min-width: 1224px)",
@@ -49,6 +51,19 @@ const LoginProvider = (props) => {
       });
   };
 
+  const getMoreInfo = (index) =>{
+    fetch("https://www.balldontlie.io/api/v1/games/" + dataTeams[index]?.id)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            setmoreData(data);
+            
+            }
+        );
+    // handleOpen();
+    // console.log(dataTeams[index]?.id);
+  }
+
   const signIn = (data) => {
     fetch("/api/login", {
       method: "POST",
@@ -78,7 +93,10 @@ const LoginProvider = (props) => {
         fetchFromLocalStorage,
         signIn,
         alertFailLogin,
-        dataTeams
+        dataTeams,
+        moreData,
+        
+        getMoreInfo
         // isTabletOrMobile,
       }}
     >

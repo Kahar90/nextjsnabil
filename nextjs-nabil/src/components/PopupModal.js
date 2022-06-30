@@ -18,16 +18,18 @@ const style = {
   p: 4,
 };
 
-const PopupModal = () => {
-  const { dataTeams } = useContext(LoginContext);
-  const [moreData, setmoreData] = useState([])
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+const PopupModal = ({ index }) => {
+  const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    getMoreInfo(index);
+    setOpen(true);
+  };
+  const { moreData, getMoreInfo } = useContext(LoginContext);
 
   return (
     <div>
-      <Button onClick={getMoreInfo}>More Info</Button>
+      <Button onClick={handleOpen}>Info</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -36,25 +38,21 @@ const PopupModal = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-           {moreData.home_team}{" from"}{moreData.home_team}
+            {moreData.home_team?.full_name} vs{" "}
+            {moreData.visitor_team?.full_name}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            Score: {moreData.home_team_score} - {moreData.visitor_team_score}
+            <br></br>
+            Period: {moreData.period} <br></br>
+            Status: {moreData.status}
+            <br></br>
+            Season: {moreData.season}
           </Typography>
         </Box>
       </Modal>
     </div>
   );
-  function getMoreInfo() {
-    fetch("https://www.balldontlie.io/api/v1/games/" + dataTeams.id)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            setmoreData(data);
-            handleOpen();
-            }
-        );
-  }
 };
 
 export default PopupModal;

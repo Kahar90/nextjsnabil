@@ -9,9 +9,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import PopupModal from "./PopupModal";
+import { Button } from "@mui/material";
 
 const TableHome = () => {
-  const { dataTeams } = useContext(LoginContext);
+  const { dataTeams, getMoreInfo } = useContext(LoginContext);
   const loggedout = () => {
     localStorage.removeItem("loggedin");
   };
@@ -47,7 +48,7 @@ const TableHome = () => {
             </TableHead>
             <TableBody>
               {/* each loop displaying data from api fetch in table rows */}
-              {dataTeams.map((row) => (
+              {dataTeams.map((row, index) => (
                 <TableRow key={row.id}>
                   <TableCell component="th" scope="row">
                     {row.home_team.full_name}{" "}
@@ -61,7 +62,8 @@ const TableHome = () => {
                   <TableCell align="right">{row.season}</TableCell>
                   <TableCell align="right">{row.status}</TableCell>
                   <TableCell align="right">
-                    <PopupModal></PopupModal>
+                  
+                    <PopupModal index={index}></PopupModal>
                   </TableCell>
                 </TableRow>
               ))}
