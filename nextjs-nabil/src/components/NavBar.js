@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Button } from "@mui/material";
 import { useRouter  } from "next/router";
 
-const NavBar = () => {
+const Navbar = () => {
   const loggedout = () => {
     localStorage.removeItem("loggedin");
   };
@@ -86,4 +86,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

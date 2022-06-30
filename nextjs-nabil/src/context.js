@@ -18,6 +18,7 @@ const LoginProvider = (props) => {
   const [dataGames, setDataGames] = useState([]);
   const [dataPlayers, setDataPlayers] = useState([]);
   const [moreData, setmoreData] = useState([]);
+  const [valueBottomNavbar, setvalueBottomNavbar] = useState(0);
 
   const router = useRouter();
   // const isDesktopOrLaptop = useMediaQuery({
@@ -117,6 +118,8 @@ const LoginProvider = (props) => {
         dataGames,
         moreData,
         dataPlayers,
+        valueBottomNavbar,
+        setvalueBottomNavbar,
         getMoreInfoGames,
         // isTabletOrMobile,
       }}

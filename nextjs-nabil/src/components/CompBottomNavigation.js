@@ -1,15 +1,17 @@
 // import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import GroupsIcon from "@mui/icons-material/Groups";
+import PersonIcon from "@mui/icons-material/Person";
+import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
+import { useRouter } from "next/router";
+import { LoginContext } from "../context";
 
 const CompBottomNavigation = () => {
-  const [value, setValue] = useState(0);
-
+  const { valueBottomNavbar, setvalueBottomNavbar } = useContext(LoginContext);
+  const router = useRouter();
   return (
     <div>
       <Box
@@ -24,14 +26,32 @@ const CompBottomNavigation = () => {
       >
         <BottomNavigation
           showLabels
-          value={value}
+          value={valueBottomNavbar}
           onChange={(event, newValue) => {
-            setValue(newValue);
+            setvalueBottomNavbar(newValue);
           }}
         >
-          <BottomNavigationAction label="Games" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Teams" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Players" icon={<LocationOnIcon />} />
+          <BottomNavigationAction
+            label="Games"
+            icon={<SportsBasketballIcon />}
+            onClick={() => {
+              router.push("/homepage");
+            }}
+          />
+          <BottomNavigationAction
+            label="Teams"
+            icon={<GroupsIcon />}
+            onClick={() => {
+              router.push("/teams");
+            }}
+          />
+          <BottomNavigationAction
+            label="Players"
+            icon={<PersonIcon />}
+            onClick={() => {
+              router.push("/players");
+            }}
+          />
         </BottomNavigation>
       </Box>
     </div>

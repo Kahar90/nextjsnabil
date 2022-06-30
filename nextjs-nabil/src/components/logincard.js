@@ -7,7 +7,7 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import styles from "../../styles/loginpage.module.scss";
 
-const Logincard = () => {
+const LoginCard = () => {
   const { signIn, alertFailLogin } = useContext(LoginContext);
 
   return (
@@ -86,4 +86,4 @@ const Logincard = () => {
   }
 };
 
-export default Logincard;
+export default LoginCard;
