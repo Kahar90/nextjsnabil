@@ -16,7 +16,7 @@ const CompBottomNavigation = () => {
         sx={{
           width: 500,
           display: { xs: "initial", md: "none" },
-          position: "absolute",
+          position: "",
           textAlign: "center",
           bottom: "0%",
           width: "100%",
@@ -29,9 +29,9 @@ const CompBottomNavigation = () => {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Events Upcoming" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction label="Games" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Teams" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Players" icon={<LocationOnIcon />} />
         </BottomNavigation>
       </Box>
     </div>

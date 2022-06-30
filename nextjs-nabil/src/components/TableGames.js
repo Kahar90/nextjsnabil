@@ -11,8 +11,8 @@ import { Box } from "@mui/system";
 import PopupModal from "./PopupModal";
 import { Button } from "@mui/material";
 
-const TableHome = () => {
-  const { dataTeams, getMoreInfo } = useContext(LoginContext);
+const TableGames = () => {
+  const { dataGames, getMoreInfoGames } = useContext(LoginContext);
   const loggedout = () => {
     localStorage.removeItem("loggedin");
   };
@@ -48,7 +48,7 @@ const TableHome = () => {
             </TableHead>
             <TableBody>
               {/* each loop displaying data from api fetch in table rows */}
-              {dataTeams.map((row, index) => (
+              {dataGames.map((row, index) => (
                 <TableRow key={row.id}>
                   <TableCell component="th" scope="row">
                     {row.home_team.full_name}{" "}
@@ -73,7 +73,7 @@ const TableHome = () => {
       </Box>
     </div>
   );
-  function openModal() {}
+ 
 };
 
-export default TableHome;
+export default TableGames;

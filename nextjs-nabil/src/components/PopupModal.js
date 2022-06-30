@@ -22,10 +22,10 @@ const PopupModal = ({ index }) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
-    getMoreInfo(index);
+    getMoreInfoGames(index);
     setOpen(true);
   };
-  const { moreData, getMoreInfo } = useContext(LoginContext);
+  const { moreData, getMoreInfoGames } = useContext(LoginContext);
 
   return (
     <div>

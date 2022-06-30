@@ -1,15 +1,16 @@
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { LoginContext } from "../src/context";
-import ViewGames from "../src/views/ViewGames";
+import ViewTeams from "../src/views/ViewTeams";
+import ViewPlayers from "../src/views/ViewPlayers";
 
 export default function homepage() {
-  const { isTabletOrMobile, isAuthenticated } = useContext(LoginContext);
+  const { isAuthenticated } = useContext(LoginContext);
   const router = useRouter();
 
   useEffect(() => {
     if (isAuthenticated === "true") {
-      router.replace("/homepage");
+      
     } else {
       router.replace("/");
     }
@@ -17,7 +18,8 @@ export default function homepage() {
 
   return (
     <div>
-      <ViewGames />
+      {/* <ViewTeams /> */}
+      <ViewPlayers></ViewPlayers>
     </div>
   );
 }

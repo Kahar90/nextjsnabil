@@ -6,11 +6,13 @@ import Typography from "@mui/material/Typography";
 import styles from "../../styles/navbar.module.scss";
 import Image from "next/image";
 import { Button } from "@mui/material";
+import { useRouter  } from "next/router";
 
 const NavBar = () => {
   const loggedout = () => {
     localStorage.removeItem("loggedin");
   };
+  const router = useRouter();
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -35,7 +37,7 @@ const NavBar = () => {
             >
               Header
             </Typography>
-            <Typography
+            <Typography onClick={() => {router.push("/homepage")}}
               component="div"
               sx={{
                 flexGrow: 1,
@@ -45,9 +47,9 @@ const NavBar = () => {
                 fontSize: { xs: "small", md: "medium" },
               }}
             >
-              Home
+              Games
             </Typography>
-            <Typography
+            <Typography onClick={() => {router.push("/teams")}}
               component="div"
               sx={{
                 mr: 3,
@@ -56,9 +58,9 @@ const NavBar = () => {
                 fontSize: { xs: "small", md: "medium" },
               }}
             >
-              About
+              Teams
             </Typography>
-            <Typography
+            <Typography onClick={() => {router.push("/players")}}
               component="div"
               sx={{
                 mr: 3,
@@ -67,7 +69,7 @@ const NavBar = () => {
                 fontSize: { xs: "small", md: "medium" },
               }}
             >
-              News
+              Players
             </Typography>
             <Button
               className={styles.button}

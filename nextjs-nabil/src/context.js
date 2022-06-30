@@ -15,8 +15,10 @@ const LoginProvider = (props) => {
   const [isAuthenticated, setisAuthenticated] = useState("false");
   const [alertFailLogin, setalertFailLogin] = useState(false);
   const [dataTeams, setDataTeams] = useState([]);
-  const [moreData, setmoreData] = useState([])
-  
+  const [dataGames, setDataGames] = useState([]);
+  const [dataPlayers, setDataPlayers] = useState([]);
+  const [moreData, setmoreData] = useState([]);
+
   const router = useRouter();
   // const isDesktopOrLaptop = useMediaQuery({
   //   query: "(min-width: 1224px)",
@@ -29,6 +31,8 @@ const LoginProvider = (props) => {
   useEffect(() => {
     fetchFromLocalStorage();
     fetchDataJsonGames();
+    fetchDataJsonTeams();
+    fetchDataJsonPlayers();
   }, []);
 
   const fetchFromLocalStorage = () => {
@@ -47,22 +51,38 @@ const LoginProvider = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setDataGames(data.data);
+      });
+  };
+
+  const fetchDataJsonTeams = () => {
+    fetch("https://www.balldontlie.io/api/v1/teams")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         setDataTeams(data.data);
       });
   };
 
-  const getMoreInfo = (index) =>{
+  const fetchDataJsonPlayers = () => {
+    fetch("https://www.balldontlie.io/api/v1/players")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setDataPlayers(data.data);
+      });
+  };
+
+  const getMoreInfoGames = (index) => {
     fetch("https://www.balldontlie.io/api/v1/games/" + dataTeams[index]?.id)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            setmoreData(data);
-            
-            }
-        );
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setmoreData(data);
+      });
     // handleOpen();
     // console.log(dataTeams[index]?.id);
-  }
+  };
 
   const signIn = (data) => {
     fetch("/api/login", {
@@ -94,9 +114,10 @@ const LoginProvider = (props) => {
         signIn,
         alertFailLogin,
         dataTeams,
+        dataGames,
         moreData,
-        
-        getMoreInfo
+        dataPlayers,
+        getMoreInfoGames,
         // isTabletOrMobile,
       }}
     >
