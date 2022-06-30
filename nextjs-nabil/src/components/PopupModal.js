@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import LoadingComp from "./LoadingComp";
+import styles from "../../styles/modal.module.scss";
 
 const style = {
   position: "absolute",
@@ -26,13 +27,13 @@ const PopupModal = ({ index }) => {
     getMoreInfoGames(index);
     setOpen(true);
   };
-  const { moreData, getMoreInfoGames, isLoadingMore } =
-    useContext(AppContext);
+  const { moreData, getMoreInfoGames, isLoadingMore } = useContext(AppContext);
 
   return (
     <div>
       <Button onClick={handleOpen}>Info</Button>
       <Modal
+        className={styles.modal}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -41,22 +42,35 @@ const PopupModal = ({ index }) => {
         <Box sx={style}>
           <div>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              {moreData.home_team?.full_name} vs{" "}
-              {moreData.visitor_team?.full_name}
+              {isLoadingMore ? (
+                <div></div>
+              ) : (
+                <div>
+                  {moreData.home_team?.full_name} vs{" "}
+                  {moreData.visitor_team?.full_name}
+                </div>
+              )}
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Score: {moreData.home_team_score} - {moreData.visitor_team_score}
-              <br></br>
-              Period: {moreData.period} <br></br>
-              Status: {moreData.status}
-              <br></br>
-              Season: {moreData.season}
+              {isLoadingMore ? (
+                <div></div>
+              ) : (
+                <div>
+                  Score: {moreData.home_team_score} -{" "}
+                  {moreData.visitor_team_score}
+                  <br></br>
+                  Period: {moreData.period} <br></br>
+                  Status: {moreData.status}
+                  <br></br>
+                  Season: {moreData.season}
+                </div>
+              )}
             </Typography>
             {isLoadingMore ? (
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "end",
+                  justifyContent: "center",
                   visibility: isLoadingMore ? "visible" : "hidden",
                 }}
               >
