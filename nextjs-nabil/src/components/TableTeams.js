@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import PopupModal from "./PopupModal";
 import { Button } from "@mui/material";
+import LoadingComp from "./LoadingComp";
 
 const TableTeams = () => {
   const { isLoading, dataTeams } = useContext(AppContext);

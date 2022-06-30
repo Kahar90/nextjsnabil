@@ -56,6 +56,9 @@ const TableGames = () => {
                   <TableCell sx={{ fontWeight: "bold" }} align="right">
                     Status
                   </TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }} align="right">
+                    Actions
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

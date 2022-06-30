@@ -47,7 +47,7 @@ const AppProvider = (props) => {
     fetch("https://www.balldontlie.io/api/v1/games")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data + "data from fetchDataJsonGames");
         setDataGames(data.data);
         setIsLoading(false);
       });
@@ -58,7 +58,7 @@ const AppProvider = (props) => {
     fetch("https://www.balldontlie.io/api/v1/teams")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data + "data from fetchDataJsonTeams");
         setDataTeams(data.data);
         setIsLoading(false);
       });
@@ -69,7 +69,7 @@ const AppProvider = (props) => {
     fetch("https://www.balldontlie.io/api/v1/players")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data + "data from fetchDataJsonPlayers");
         setDataPlayers(data.data);
         setIsLoading(false);
       });
@@ -80,15 +80,13 @@ const AppProvider = (props) => {
     fetch("https://www.balldontlie.io/api/v1/games/" + dataTeams[index]?.id)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data + "data from getMoreInfoGames");
         setmoreData(data);
         setIsLoadingMore(false);
       });
   };
 
   const signIn = (data) => {
-    setIsLoading(true);
-
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -105,7 +103,6 @@ const AppProvider = (props) => {
           router.replace("/homepage");
         } else {
           setalertFailLogin(true);
-          setIsLoading(false);
         }
       });
     });
@@ -114,7 +111,7 @@ const AppProvider = (props) => {
   const loggedout = () => {
     localStorage.removeItem("loggedin");
     setisAuthenticated("false");
-    router.replace("/");
+    // router.replace("/");
   };
 
   return (
