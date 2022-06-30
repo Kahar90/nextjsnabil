@@ -14,6 +14,7 @@ const LoginProvider = (props) => {
   const { children } = props;
   const [isAuthenticated, setisAuthenticated] = useState("false");
   const [alertFailLogin, setalertFailLogin] = useState(false);
+  const [dataTeams, setDataTeams] = useState([]);
   const router = useRouter();
   // const isDesktopOrLaptop = useMediaQuery({
   //   query: "(min-width: 1224px)",
@@ -25,6 +26,7 @@ const LoginProvider = (props) => {
 
   useEffect(() => {
     fetchFromLocalStorage();
+    fetchDataJsonGames();
   }, []);
 
   const fetchFromLocalStorage = () => {
@@ -35,6 +37,16 @@ const LoginProvider = (props) => {
 
   const saveToLocalStorage = () => {
     localStorage.setItem("loggedin", "true");
+  };
+
+  const fetchDataJsonGames = () => {
+    // create a fetch from https://www.balldontlie.io/api/v1/games
+    fetch("https://www.balldontlie.io/api/v1/games")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setDataTeams(data.data);
+      });
   };
 
   const signIn = (data) => {
@@ -66,6 +78,7 @@ const LoginProvider = (props) => {
         fetchFromLocalStorage,
         signIn,
         alertFailLogin,
+        dataTeams
         // isTabletOrMobile,
       }}
     >

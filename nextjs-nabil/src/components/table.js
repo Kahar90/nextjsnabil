@@ -8,10 +8,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { Button } from "@mui/material";
-import { Grid } from "@mui/material";
+import PopupModal from "./PopupModal";
 
 const TableHome = () => {
+  const { dataTeams } = useContext(LoginContext);
   const loggedout = () => {
     localStorage.removeItem("loggedin");
   };
@@ -28,41 +28,50 @@ const TableHome = () => {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell align="right">Calories</TableCell>
-                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>
+                  Games (Home vs Visitor)
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold" }} align="right">
+                  Home Team Score
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold" }} align="right">
+                  Visitor Team Score
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold" }} align="right">
+                  Season
+                </TableCell>
+                <TableCell sx={{ fontWeight: "bold" }} align="right">
+                  Status
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell>Brownie</TableCell>
-                <TableCell align="right">250</TableCell>
-                <TableCell align="right">20</TableCell>
-                <TableCell align="right">5</TableCell>
-                <TableCell align="right">6</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Cheetos</TableCell>
-                <TableCell align="right">100</TableCell>
-                <TableCell align="right">25</TableCell>
-                <TableCell align="right">30</TableCell>
-                <TableCell align="right">10</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Apple</TableCell>
-                <TableCell align="right">25</TableCell>
-                <TableCell align="right">10</TableCell>
-                <TableCell align="right">40</TableCell>
-                <TableCell align="right">5</TableCell>
-              </TableRow>
+              {/* each loop displaying data from api fetch in table rows */}
+              {dataTeams.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell component="th" scope="row">
+                    {row.home_team.full_name}{" "}
+                    <b>
+                      <i>vs</i>
+                    </b>{" "}
+                    {row.visitor_team.full_name}
+                  </TableCell>
+                  <TableCell align="right">{row.home_team_score}</TableCell>
+                  <TableCell align="right">{row.visitor_team_score}</TableCell>
+                  <TableCell align="right">{row.season}</TableCell>
+                  <TableCell align="right">{row.status}</TableCell>
+                  <TableCell align="right">
+                    <PopupModal></PopupModal>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Box>
     </div>
   );
+  function openModal() {}
 };
 
 export default TableHome;

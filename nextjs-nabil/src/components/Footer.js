@@ -5,7 +5,8 @@ const Footer = () => {
     <div>
       <Box
         sx={{
-          position: "absolute",
+          // position: "absolute",
+
           textAlign: "center",
           bottom: "0%",
           width: "100%",
