@@ -5,27 +5,28 @@ import { Paper } from "@mui/material";
 import { Alert } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
+import styles from "../../styles/loginpage.module.scss";
 
 const Logincard = () => {
   const { signIn, alertFailLogin } = useContext(LoginContext);
 
   return (
-    <div>
+    <div className={styles.logincard}>
       <Grid
         container
         spacing={10}
         sx={{ flexDirection: { xs: "column", md: "row" } }}
       >
         <Grid item sx={{ textAlign: "center", margin: "auto" }}>
-          <h1>
+          <h1 className={styles.h1}>
             Hello There! <br></br>Please Log in
           </h1>
         </Grid>
         <Grid item>
           <Paper
+            className={styles.paper}
             variant="outlined"
             sx={{
-              backgroundColor: "white",
               padding: "40px",
               borderRadius: "20px",
               boxShadow: "0px 0px 2px 0px ",
@@ -37,7 +38,7 @@ const Logincard = () => {
 
               <div>
                 <form onSubmit={login}>
-                  <TextField
+                  <TextField className={styles.textfield}
                     sx={{ marginTop: "10px", marginBottom: "10px" }}
                     label="ID"
                     variant="outlined"
@@ -47,7 +48,7 @@ const Logincard = () => {
 
                   <br></br>
 
-                  <TextField
+                  <TextField className={styles.textfield}
                     sx={{ marginTop: "", marginBottom: "10px" }}
                     label="Password"
                     variant="outlined"
@@ -56,11 +57,7 @@ const Logincard = () => {
                   />
                   <br></br>
 
-                  <Button
-                    type="submit"
-                    sx={{ marginTop: "10px" }}
-                    // onClick = {login}
-                  >
+                  <Button className={styles.button} type="submit">
                     Login
                   </Button>
                 </form>

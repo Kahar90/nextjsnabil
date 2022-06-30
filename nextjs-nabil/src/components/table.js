@@ -60,11 +60,6 @@ const TableHome = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Grid container justifyContent="center" marginTop={10}>
-          <Button variant="outlined" href="/" onClick={loggedout}>
-            Log out
-          </Button>
-        </Grid>
       </Box>
     </div>
   );

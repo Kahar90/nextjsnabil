@@ -15,13 +15,13 @@ const LoginProvider = (props) => {
   const [isAuthenticated, setisAuthenticated] = useState("false");
   const [alertFailLogin, setalertFailLogin] = useState(false);
   const router = useRouter();
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1224px)",
-  });
-  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+  // const isDesktopOrLaptop = useMediaQuery({
+  //   query: "(min-width: 1224px)",
+  // });
+  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
 
   useEffect(() => {
     fetchFromLocalStorage();
@@ -66,7 +66,7 @@ const LoginProvider = (props) => {
         fetchFromLocalStorage,
         signIn,
         alertFailLogin,
-        isTabletOrMobile,
+        // isTabletOrMobile,
       }}
     >
       {children}

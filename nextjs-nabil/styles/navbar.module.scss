@@ -1,0 +1,21 @@
+$primarycolor: #a94949;
+$secondarycolor: #3474ab;
+
+.toolbar {
+  background-color: $primarycolor;
+}
+
+.button {
+  background-color: $secondarycolor;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.image {
+  color: #fff;
+  display: inline-block;
+}
