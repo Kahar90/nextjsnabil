@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
-import { LoginContext } from "../src/context";
+import { AppContext } from "../src/context";
 import ViewGames from "../src/views/ViewGames";
 
 export default function homepage() {
-  const { isTabletOrMobile, isAuthenticated } = useContext(LoginContext);
+  const { isLoading, isAuthenticated } = useContext(AppContext);
   const router = useRouter();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function homepage() {
 
   return (
     <div>
-      <ViewGames />
+      <ViewGames></ViewGames>
     </div>
   );
 }

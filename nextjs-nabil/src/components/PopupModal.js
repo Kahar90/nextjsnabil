@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useContext, useState } from "react";
-import { LoginContext } from "../context";
+import { AppContext } from "../context";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import LoadingComp from "./LoadingComp";
 
 const style = {
   position: "absolute",
@@ -25,7 +26,8 @@ const PopupModal = ({ index }) => {
     getMoreInfoGames(index);
     setOpen(true);
   };
-  const { moreData, getMoreInfoGames } = useContext(LoginContext);
+  const { moreData, getMoreInfoGames, isLoadingMore } =
+    useContext(AppContext);
 
   return (
     <div>
@@ -37,18 +39,33 @@ const PopupModal = ({ index }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {moreData.home_team?.full_name} vs{" "}
-            {moreData.visitor_team?.full_name}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Score: {moreData.home_team_score} - {moreData.visitor_team_score}
-            <br></br>
-            Period: {moreData.period} <br></br>
-            Status: {moreData.status}
-            <br></br>
-            Season: {moreData.season}
-          </Typography>
+          <div>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {moreData.home_team?.full_name} vs{" "}
+              {moreData.visitor_team?.full_name}
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Score: {moreData.home_team_score} - {moreData.visitor_team_score}
+              <br></br>
+              Period: {moreData.period} <br></br>
+              Status: {moreData.status}
+              <br></br>
+              Season: {moreData.season}
+            </Typography>
+            {isLoadingMore ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                  visibility: isLoadingMore ? "visible" : "hidden",
+                }}
+              >
+                <LoadingComp></LoadingComp>
+              </Box>
+            ) : (
+              <div></div>
+            )}
+          </div>
         </Box>
       </Modal>
     </div>

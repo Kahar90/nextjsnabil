@@ -1,11 +1,11 @@
 import Layout from "../src/layouts/Layout";
 import "../styles/globals.scss";
-import LoginProvider from "../src/context";
+import AppProvider from "../src/context";
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <LoginProvider>
+    <AppProvider>
       <Head>
         <link rel="icon" href="/icon.svg"></link>
       </Head>
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </Layout>
       
-    </LoginProvider>
+    </AppProvider>
   );
 }
 

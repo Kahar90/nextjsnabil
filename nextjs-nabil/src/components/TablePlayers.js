@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LoginContext } from "../context";
+import { AppContext } from "../context";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,12 +12,26 @@ import PopupModal from "./PopupModal";
 import { Button } from "@mui/material";
 
 const TablePlayers = () => {
-  const { dataPlayers } = useContext(LoginContext);
+  const { isLoading, dataPlayers } = useContext(AppContext);
 
   return (
     <div>
+      {isLoading ? (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+          sx={{ visibility: isLoading ? "visible" : "hidden" }}
+        >
+          <LoadingComp></LoadingComp>
+        </Box>
+      ) : (
+        <div></div>
+      )}
       <Box
         sx={{
+          visibility: isLoading ? "hidden" : "visible",
           width: "98%",
           margin: "auto",
           marginTop: "10px",

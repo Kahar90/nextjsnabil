@@ -7,10 +7,10 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import PersonIcon from "@mui/icons-material/Person";
 import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import { useRouter } from "next/router";
-import { LoginContext } from "../context";
+import { AppContext } from "../context";
 
 const CompBottomNavigation = () => {
-  const { valueBottomNavbar, setvalueBottomNavbar } = useContext(LoginContext);
+  const { valueBottomNavbar, setvalueBottomNavbar } = useContext(AppContext);
   const router = useRouter();
   return (
     <div>

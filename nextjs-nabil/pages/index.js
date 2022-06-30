@@ -1,11 +1,11 @@
-import { LoginContext } from "../src/context";
+import { AppContext } from "../src/context";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { Box } from "@mui/system";
 import Logincard from "../src/components/logincard";
 
 export default function Home() {
-  const { isAuthenticated } = useContext(LoginContext);
+  const { isAuthenticated } = useContext(AppContext);
   const router = useRouter();
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import { LoginContext } from "../context";
+import { AppContext } from "../context";
 import { useContext, useEffect } from "react";
 import { Paper } from "@mui/material";
 import { Alert } from "@mui/material";
@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import styles from "../../styles/loginpage.module.scss";
 
 const LoginCard = () => {
-  const { signIn, alertFailLogin } = useContext(LoginContext);
+  const { signIn, alertFailLogin } = useContext(AppContext);
 
   return (
     <div className={styles.logincard}>

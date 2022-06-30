@@ -6,7 +6,8 @@ import Typography from "@mui/material/Typography";
 import styles from "../../styles/navbar.module.scss";
 import Image from "next/image";
 import { Button } from "@mui/material";
-import { useRouter  } from "next/router";
+import { useRouter } from "next/router";
+import ButtonLogout from "./ButtonLogout";
 
 const Navbar = () => {
   const loggedout = () => {
@@ -29,7 +30,7 @@ const Navbar = () => {
               component="div"
               sx={{
                 ml: 2,
-                flexGrow:1,
+                flexGrow: 1,
                 textAlign: "start",
                 mr: 10,
                 fontSize: { xs: "small", md: "large" },
@@ -37,7 +38,10 @@ const Navbar = () => {
             >
               Header
             </Typography>
-            <Typography onClick={() => {router.push("/homepage")}}
+            <Typography
+              onClick={() => {
+                router.push("/homepage");
+              }}
               component="div"
               sx={{
                 flexGrow: 1,
@@ -49,7 +53,10 @@ const Navbar = () => {
             >
               Games
             </Typography>
-            <Typography onClick={() => {router.push("/teams")}}
+            <Typography
+              onClick={() => {
+                router.push("/teams");
+              }}
               component="div"
               sx={{
                 mr: 3,
@@ -60,7 +67,10 @@ const Navbar = () => {
             >
               Teams
             </Typography>
-            <Typography onClick={() => {router.push("/players")}}
+            <Typography
+              onClick={() => {
+                router.push("/players");
+              }}
               component="div"
               sx={{
                 mr: 3,
@@ -71,14 +81,17 @@ const Navbar = () => {
             >
               Players
             </Typography>
-            <Button
+            {/* <Button
               className={styles.button}
               variant="contained"
               href="/"
               onClick={loggedout}
-            sx={{alignItems:"self-end"}}>
+              sx={{ alignItems: "self-end" }}
+            >
               Log out
-            </Button>
+            </Button> */}
+            
+            <ButtonLogout></ButtonLogout>
           </Toolbar>
         </AppBar>
       </Box>

@@ -8,9 +8,9 @@ import {
 import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
 
-export const LoginContext = createContext();
+export const AppContext = createContext();
 
-const LoginProvider = (props) => {
+const AppProvider = (props) => {
   const { children } = props;
   const [isAuthenticated, setisAuthenticated] = useState("false");
   const [alertFailLogin, setalertFailLogin] = useState(false);
@@ -19,15 +19,10 @@ const LoginProvider = (props) => {
   const [dataPlayers, setDataPlayers] = useState([]);
   const [moreData, setmoreData] = useState([]);
   const [valueBottomNavbar, setvalueBottomNavbar] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const router = useRouter();
-  // const isDesktopOrLaptop = useMediaQuery({
-  //   query: "(min-width: 1224px)",
-  // });
-  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
 
   useEffect(() => {
     fetchFromLocalStorage();
@@ -48,44 +43,52 @@ const LoginProvider = (props) => {
 
   const fetchDataJsonGames = () => {
     // create a fetch from https://www.balldontlie.io/api/v1/games
+    setIsLoading(true);
     fetch("https://www.balldontlie.io/api/v1/games")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setDataGames(data.data);
+        setIsLoading(false);
       });
   };
 
   const fetchDataJsonTeams = () => {
+    setIsLoading(true);
     fetch("https://www.balldontlie.io/api/v1/teams")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setDataTeams(data.data);
+        setIsLoading(false);
       });
   };
 
   const fetchDataJsonPlayers = () => {
+    setIsLoading(true);
     fetch("https://www.balldontlie.io/api/v1/players")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setDataPlayers(data.data);
+        setIsLoading(false);
       });
   };
 
   const getMoreInfoGames = (index) => {
+    setIsLoadingMore(true);
     fetch("https://www.balldontlie.io/api/v1/games/" + dataTeams[index]?.id)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setmoreData(data);
+        setIsLoadingMore(false);
       });
-    // handleOpen();
-    // console.log(dataTeams[index]?.id);
   };
 
   const signIn = (data) => {
+    setIsLoading(true);
+
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -102,13 +105,20 @@ const LoginProvider = (props) => {
           router.replace("/homepage");
         } else {
           setalertFailLogin(true);
+          setIsLoading(false);
         }
       });
     });
   };
 
+  const loggedout = () => {
+    localStorage.removeItem("loggedin");
+    setisAuthenticated("false");
+    router.replace("/");
+  };
+
   return (
-    <LoginContext.Provider
+    <AppContext.Provider
       value={{
         isAuthenticated,
         fetchFromLocalStorage,
@@ -121,12 +131,15 @@ const LoginProvider = (props) => {
         valueBottomNavbar,
         setvalueBottomNavbar,
         getMoreInfoGames,
+        isLoading,
+        isLoadingMore,
+        loggedout,
         // isTabletOrMobile,
       }}
     >
       {children}
-    </LoginContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export default LoginProvider;
+export default AppProvider;
