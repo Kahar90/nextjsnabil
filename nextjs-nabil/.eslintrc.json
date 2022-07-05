@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
-}
+    "root": true,
+    "extends": ["next/core-web-vitals", "airbnb", "prettier"],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "rules": {
+      "react/function-component-definition": "off",
+      "react/jsx-filename-extension": "off",
+      "react/prop-types": "off"
+    }
+  }
