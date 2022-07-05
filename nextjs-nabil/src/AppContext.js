@@ -1,19 +1,10 @@
-import {
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-  Children,
-} from "react";
-import { useRouter } from "next/router";
-import { useMediaQuery } from "react-responsive";
-
+import React, { useState, createContext, useEffect } from "react";
 export const AppContext = createContext();
 
 const AppProvider = (props) => {
   const { children } = props;
   const [isAuthenticated, setisAuthenticated] = useState("false");
-  const [alertFailLogin, setalertFailLogin] = useState(false);
+  // const [alertFailLogin, setalertFailLogin] = useState(false);
   const [dataTeams, setDataTeams] = useState([]);
   const [dataGames, setDataGames] = useState([]);
   const [dataPlayers, setDataPlayers] = useState([]);
@@ -22,24 +13,24 @@ const AppProvider = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
-    fetchFromLocalStorage();
+    // fetchFromLocalStorage();
     fetchDataJsonGames();
     fetchDataJsonTeams();
     fetchDataJsonPlayers();
   }, []);
 
-  const fetchFromLocalStorage = () => {
-    // restore if user has logged in before
-    let temp = localStorage.getItem("loggedin");
-    setisAuthenticated(temp);
-  };
+  // const fetchFromLocalStorage = () => {
+  //   // restore if user has logged in before
+  //   let temp = localStorage.getItem("loggedin");
+  //   setisAuthenticated(temp);
+  // };
 
-  const saveToLocalStorage = () => {
-    localStorage.setItem("loggedin", "true");
-  };
+  // const saveToLocalStorage = () => {
+  //   localStorage.setItem("loggedin", "true");
+  // };
 
   const fetchDataJsonGames = () => {
     // create a fetch from https://www.balldontlie.io/api/v1/games
@@ -86,41 +77,40 @@ const AppProvider = (props) => {
       });
   };
 
-  const signIn = (data) => {
-    fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => {
-      res.json().then((data) => {
-        console.log(data);
-        if (data.message === "login success") {
-          console.log(isAuthenticated);
-          setisAuthenticated("true");
-          saveToLocalStorage();
-          router.replace("/homepage");
-        } else {
-          setalertFailLogin(true);
-        }
-      });
-    });
-  };
+  // const signIn = (data) => {
+  //   fetch("/api/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   }).then((res) => {
+  //     res.json().then((data) => {
+  //       console.log(data);
+  //       if (data.message === "login success") {
+  //         console.log(isAuthenticated);
+  //         setisAuthenticated("true");
+  //         saveToLocalStorage();
+  //         router.replace("/homepage");
+  //       } else {
+  //         setalertFailLogin(true);
+  //       }
+  //     });
+  //   });
+  // };
 
   const loggedout = () => {
     localStorage.removeItem("loggedin");
     setisAuthenticated("false");
-    // router.replace("/");
   };
 
   return (
     <AppContext.Provider
       value={{
         isAuthenticated,
-        fetchFromLocalStorage,
-        signIn,
-        alertFailLogin,
+        // fetchFromLocalStorage,
+        // signIn,
+        // alertFailLogin,
         dataTeams,
         dataGames,
         moreData,
@@ -131,7 +121,6 @@ const AppProvider = (props) => {
         isLoading,
         isLoadingMore,
         loggedout,
-        // isTabletOrMobile,
       }}
     >
       {children}

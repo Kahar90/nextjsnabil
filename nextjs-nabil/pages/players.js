@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
-import { AppContext } from "../src/context";
-import ViewTeams from "../src/views/ViewTeams";
+// import { AppContext } from "../AppContext";
 import ViewPlayers from "../src/views/ViewPlayers";
+import { LoginContext } from "../src/LoginContext";
 
 export default function homepage() {
-  const { isAuthenticated } = useContext(AppContext);
+  const { isAuthenticated } = useContext(LoginContext);
   const router = useRouter();
 
   useEffect(() => {

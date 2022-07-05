@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import React, { useContext } from "react";
 import styles from "../../styles/buttonlogout.module.scss";
-import { AppContext } from "../context";
+import { LoginContext } from "../LoginContext";
 
 const ButtonLogout = () => {
-    const {loggedout} = useContext(AppContext)
+    const {loggedout} = useContext(LoginContext)
   return (
      <button className={styles.button} onClick={loggedout}>Log Out</button>
     

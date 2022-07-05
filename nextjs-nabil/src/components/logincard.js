@@ -1,14 +1,11 @@
 import Grid from "@mui/material/Grid";
-import { AppContext } from "../context";
-import { useContext, useEffect } from "react";
-import { Paper } from "@mui/material";
-import { Alert } from "@mui/material";
-import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
+import React, { useContext } from "react";
+import { Paper, Alert, TextField, Button } from "@mui/material";
 import styles from "../../styles/loginpage.module.scss";
+import { LoginContext } from "../LoginContext";
 
 const LoginCard = () => {
-  const { signIn, alertFailLogin } = useContext(AppContext);
+  const { signIn, alertFailLogin } = useContext(LoginContext);
 
   return (
     <div className={styles.logincard}>
@@ -77,7 +74,7 @@ const LoginCard = () => {
       </Grid>
     </div>
   );
-  function login(params) {
+  function login() {
     event.preventDefault();
     let idField = document.getElementById("idField").value;
     let passwordField = document.getElementById("passwordField").value;

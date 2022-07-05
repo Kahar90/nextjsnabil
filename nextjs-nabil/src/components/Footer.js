@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@mui/system";
 import styles from "./../../styles/footer.module.scss";
 const Footer = () => {

@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { AppContext } from "../context";
+import React, { useContext } from "react";
+import { AppContext } from "../AppContext";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,14 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import PopupModal from "./PopupModal";
-import { Button } from "@mui/material";
 import LoadingComp from "./LoadingComp";
 
 const TableGames = () => {
-  const { isLoading, dataGames, getMoreInfoGames } = useContext(AppContext);
-  const loggedout = () => {
-    localStorage.removeItem("loggedin");
-  };
+  const { isLoading, dataGames } = useContext(AppContext);
+
   return (
     <div>
       {isLoading ? (

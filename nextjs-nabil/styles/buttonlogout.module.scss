@@ -1,22 +1,19 @@
-$primarycolor: #a94949;
-$secondarycolor: #3474ab;
-.button{
-    background-color: $secondarycolor;
-    border-radius: 5px;
-    border: 1px solid $primarycolor;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 12px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-    
+@import "Colors";
+
+.button {
+  background-color: $secondarycolor;
+  border-radius: 5px;
+  border: 1px solid $primarycolor;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
 }
 
-.button:hover{
-    background-color: $primarycolor;
-    border: 2px solid $secondarycolor;
-    color: #fff;
+.button:hover {
+  box-shadow: 1px 1px 3px hsl(0, 0%, 14%);
 }

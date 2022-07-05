@@ -1,18 +1,14 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import styles from "../../styles/navbar.module.scss";
 import Image from "next/image";
-import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import ButtonLogout from "./ButtonLogout";
 
 const Navbar = () => {
-  const loggedout = () => {
-    localStorage.removeItem("loggedin");
-  };
   const router = useRouter();
   return (
     <div>
@@ -90,7 +86,7 @@ const Navbar = () => {
             >
               Log out
             </Button> */}
-            
+
             <ButtonLogout></ButtonLogout>
           </Toolbar>
         </AppBar>

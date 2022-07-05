@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { AppContext } from "../context";
+import React, { useContext } from "react";
+import { AppContext } from "../AppContext";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,8 +8,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import PopupModal from "./PopupModal";
-import { Button } from "@mui/material";
+import LoadingComp from "./LoadingComp";
+
 
 const TablePlayers = () => {
   const { isLoading, dataPlayers } = useContext(AppContext);
@@ -52,7 +52,7 @@ const TablePlayers = () => {
             </TableHead>
             <TableBody>
               {/* each loop displaying data from api fetch in table rows */}
-              {dataPlayers.map((row, index) => (
+              {dataPlayers.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell component="th" scope="row">
                     {row.first_name}{" "} {row.last_name}
