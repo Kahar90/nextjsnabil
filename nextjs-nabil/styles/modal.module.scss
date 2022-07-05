@@ -15,11 +15,10 @@
 }
 
 .button:hover {
-  background-color: hsl(0, 60%, 57%);
+  background-color: $secondarycolor;
 }
 
 .buttonModal {
-  background-color: hsl(0, 0%, 90%);
   border: none;
   color: black;
   padding: 6px 12px;
@@ -35,7 +34,7 @@
 }
 
 .buttonModal:hover{
-    background-color: hsl(0, 36%, 57%);
+    background-color: $secondarycolor;
   }
 
 .box {
