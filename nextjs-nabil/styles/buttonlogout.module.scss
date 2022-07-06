@@ -1,0 +1,19 @@
+@import "Colors";
+
+.button {
+  background-color: $secondarycolor;
+  border-radius: 5px;
+  border: 1px solid $primarycolor;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 1px 1px 3px hsl(0, 0%, 14%);
+}

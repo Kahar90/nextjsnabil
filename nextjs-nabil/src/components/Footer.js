@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@mui/system";
 import styles from "./../../styles/footer.module.scss";
 const Footer = () => {
@@ -5,7 +6,8 @@ const Footer = () => {
     <div>
       <Box
         sx={{
-          position: "absolute",
+          // position: "absolute",
+
           textAlign: "center",
           bottom: "0%",
           width: "100%",

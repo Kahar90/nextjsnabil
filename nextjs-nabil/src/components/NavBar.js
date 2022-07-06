@@ -1,16 +1,15 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import styles from "../../styles/navbar.module.scss";
 import Image from "next/image";
-import { Button } from "@mui/material";
+import { useRouter } from "next/router";
+import ButtonLogout from "./ButtonLogout";
 
-const NavBar = () => {
-  const loggedout = () => {
-    localStorage.removeItem("loggedin");
-  };
+const Navbar = () => {
+  const router = useRouter();
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -27,7 +26,7 @@ const NavBar = () => {
               component="div"
               sx={{
                 ml: 2,
-                flexGrow:1,
+                flexGrow: 1,
                 textAlign: "start",
                 mr: 10,
                 fontSize: { xs: "small", md: "large" },
@@ -36,6 +35,9 @@ const NavBar = () => {
               Header
             </Typography>
             <Typography
+              onClick={() => {
+                router.push("/homepage");
+              }}
               component="div"
               sx={{
                 flexGrow: 1,
@@ -45,9 +47,12 @@ const NavBar = () => {
                 fontSize: { xs: "small", md: "medium" },
               }}
             >
-              Home
+              Games
             </Typography>
             <Typography
+              onClick={() => {
+                router.push("/teams");
+              }}
               component="div"
               sx={{
                 mr: 3,
@@ -56,9 +61,12 @@ const NavBar = () => {
                 fontSize: { xs: "small", md: "medium" },
               }}
             >
-              About
+              Teams
             </Typography>
             <Typography
+              onClick={() => {
+                router.push("/players");
+              }}
               component="div"
               sx={{
                 mr: 3,
@@ -67,16 +75,19 @@ const NavBar = () => {
                 fontSize: { xs: "small", md: "medium" },
               }}
             >
-              News
+              Players
             </Typography>
-            <Button
+            {/* <Button
               className={styles.button}
               variant="contained"
               href="/"
               onClick={loggedout}
-            sx={{alignItems:"self-end"}}>
+              sx={{ alignItems: "self-end" }}
+            >
               Log out
-            </Button>
+            </Button> */}
+
+            <ButtonLogout></ButtonLogout>
           </Toolbar>
         </AppBar>
       </Box>
@@ -84,4 +95,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

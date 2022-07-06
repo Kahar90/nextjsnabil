@@ -1,15 +1,15 @@
-import TableHome from "../components/table";
 import * as React from "react";
 import CompBottomNavigation from "../components/CompBottomNavigation";
+import TablePlayers from "../components/TablePlayers";
 
-
-const ViewHomepage = () => {
+const ViewPlayers = () => {
   const [value, setValue] = React.useState(0);
   return (
     <div>
-      <TableHome></TableHome>
+      {/* <TableGames></TableGames> */}
+      <TablePlayers></TablePlayers>
       <CompBottomNavigation></CompBottomNavigation>
     </div>
   );
 };
-export default ViewHomepage;
+export default ViewPlayers;

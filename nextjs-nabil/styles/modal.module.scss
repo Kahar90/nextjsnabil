@@ -1,0 +1,51 @@
+@import 'Colors';
+
+.button {
+  background-color: $primarycolor;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px hsl(0, 0%, 60%);
+}
+
+.button:hover {
+  background-color: $secondarycolor;
+}
+
+.buttonModal {
+  border: none;
+  color: black;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  margin-top: 10px;
+
+  
+}
+
+.buttonModal:hover{
+    background-color: $secondarycolor;
+  }
+
+.box {
+  background-color: $primarycolor;
+  position: relative;
+  top: 40%;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+}

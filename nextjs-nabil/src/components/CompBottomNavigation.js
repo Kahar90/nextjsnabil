@@ -1,22 +1,23 @@
-// import * as React from "react";
-import { useState } from "react";
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import GroupsIcon from "@mui/icons-material/Groups";
+import PersonIcon from "@mui/icons-material/Person";
+import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
+import { useRouter } from "next/router";
+import { AppContext } from "../AppContext";
 
 const CompBottomNavigation = () => {
-  const [value, setValue] = useState(0);
-
+  const { valueBottomNavbar, setvalueBottomNavbar } = useContext(AppContext);
+  const router = useRouter();
   return (
     <div>
       <Box
         sx={{
-          width: 500,
+          // width: 500,
           display: { xs: "initial", md: "none" },
-          position: "absolute",
+          position: "",
           textAlign: "center",
           bottom: "0%",
           width: "100%",
@@ -24,14 +25,32 @@ const CompBottomNavigation = () => {
       >
         <BottomNavigation
           showLabels
-          value={value}
+          value={valueBottomNavbar}
           onChange={(event, newValue) => {
-            setValue(newValue);
+            setvalueBottomNavbar(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Events Upcoming" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction
+            label="Games"
+            icon={<SportsBasketballIcon />}
+            onClick={() => {
+              router.push("/homepage");
+            }}
+          />
+          <BottomNavigationAction
+            label="Teams"
+            icon={<GroupsIcon />}
+            onClick={() => {
+              router.push("/teams");
+            }}
+          />
+          <BottomNavigationAction
+            label="Players"
+            icon={<PersonIcon />}
+            onClick={() => {
+              router.push("/players");
+            }}
+          />
         </BottomNavigation>
       </Box>
     </div>

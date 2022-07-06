@@ -1,19 +1,22 @@
+import React from "react";
 import Layout from "../src/layouts/Layout";
 import "../styles/globals.scss";
-import LoginProvider from "../src/context";
-import Head from 'next/head';
+import AppProvider from "../src/AppContext";
+import Head from "next/head";
+import LoginProvider from "../src/LoginContext";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <LoginProvider>
-      <Head>
-        <link rel="icon" href="/icon.svg"></link>
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      
-    </LoginProvider>
+    <AppProvider>
+      <LoginProvider>
+        <Head>
+          <link rel="icon" href="/icon.svg"></link>
+        </Head>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </LoginProvider>
+    </AppProvider>
   );
 }
 
